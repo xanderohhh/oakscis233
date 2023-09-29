@@ -1,6 +1,8 @@
 <?php
+// namespace App\Models;
 
 use Illuminate\Support\Facades\Route;
+use App\Models\TvMazeAPI;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/episodes', function () {
+    $showNumber = intval(request()->query('showNumber'));
+    $showNumber = $showNumber < 1 ? 1: $showNumber;
+    $episodes = TvMazeAPI::fetch($showNumber);
+    return view('episodes/index', ['episodes' => $episodes]);
+});
 
 Route::get('/', function () {
     return view('welcome');

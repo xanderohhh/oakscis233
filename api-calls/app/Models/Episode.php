@@ -1,19 +1,11 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
 
-class Episode {
-    public $name;
-    public $imageURL;
-    public $season;
-    public $episode;
-    public $summary;
+class Episode extends Model{
 
-    public function __construct($name, $imageURL, $season, $episode, $summary){
-        $this->name = $name;
-        $this->imageURL = $imageURL;
-        $this->season = $season;
-        $this->episode = $episode;
-        $this->summary = $summary;
-    }
+
+    protected $fillable = ['name', 'image', 'season', 'episode', 'summary', 'show_number'];
+
 };

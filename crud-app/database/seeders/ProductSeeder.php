@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
         foreach(range(1,50) as $number) {
             Product::create([
                 'name' => $faker->name,
-                'price' => $faker->randomFloat(2, 0.99, 99999.99),
+                'price' => $faker->randomFloat(2, 0.99, 999999.99),
                 'description' => $faker->sentence,
                 'item_number' => $faker->randomNumber(3),
                 'image' => $faker->imageUrl(360, 360, 'animals', true, 'cats')

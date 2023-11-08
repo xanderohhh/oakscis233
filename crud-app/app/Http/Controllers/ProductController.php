@@ -21,7 +21,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $product = new Product;
+        return view('products.create', ['product' => $product]);
     }
 
     /**
@@ -29,7 +30,8 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create($this->validatedData($request));
+        return redirect()->route('products.index')->with('success', 'Product was successfully added.');
     }
 
     /**
@@ -38,30 +40,45 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return view('products.show', ['product'=> $product]);
+        return view('products.show', ['product' => $product]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        return view('products.edit', ['product' => $product]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        Product::find($id)->update($this->validatedData($request));
+        return redirect()->route('products.index')->with('success', 'Product was successfully updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id)->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product was deleted.');
+    }
+
+    private function validatedData($request)
+    {
+        return $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'item_number' => 'required',
+            'price' => 'required',
+            'image' => 'required',
+        ]);
     }
 }

@@ -18,16 +18,24 @@
     </style>
     <title>Products</title>
 </head>
+
 <body>
     <h1>Products</h1>
     @if (session()->get('success'))
-    <div class="alert alert-success">
-        {{session()->get('success')}}
-    </div>
-        
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <span>{{ $error }}</span><br>
+            @endforeach
+        </div>
     @endif
     <div>
         @yield('content')
     </div>
 </body>
+
 </html>

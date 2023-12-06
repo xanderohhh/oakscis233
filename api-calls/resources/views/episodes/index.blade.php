@@ -20,7 +20,7 @@
                 <p>There are no episodes to show.</p>
             @else
                 @foreach ($episodes as $episode)
-                    <div class="col-md-2 mb-4">
+                    <div class="col-auto mb-4">
                         <div class="card" style="width: 18rem;">
                             <img src="{{ $episode->image }}" class="card-img-top" alt="...">
                             <div class="card-body">

@@ -17,9 +17,9 @@ class ProductPost extends Controller {
             $data = $request->all();
             $validatedData = ProductValidator::validate($data, 'post');
             $product = Product::create($validatedData);
-            return response()->json(['product' => $product], 200);
+            return response()->json(['product' => $product], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Error creating the product: '.$e->getMessage()], 400);
+            return response()->json(['message' => 'Error creating the product.'], Response::HTTP_BAD_REQUEST);
         }
 
 

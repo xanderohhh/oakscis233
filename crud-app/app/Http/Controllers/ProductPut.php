@@ -27,7 +27,7 @@ class ProductPut extends Controller
             $product->update($validatedData);
             return response()->json(['product' => $product], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Error updating the product: '.$e->getMessage()], Response::HTTP_NOT_FOUND);
+            return response()->json(['message' => 'Error updating the product.'], Response::HTTP_NOT_FOUND);
         }
 
     }

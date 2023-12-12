@@ -21,6 +21,7 @@
 
 <body>
     <h1>Products</h1>
+
     @if (session()->get('success'))
         <div class="alert alert-success">
             {{ session()->get('success') }}
@@ -36,6 +37,7 @@
     <div>
         @yield('content')
     </div>
-</body>
+
+</body> 
 
 </html>

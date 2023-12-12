@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use \App\Models\Product;
 
@@ -21,7 +20,7 @@ class ProductDelete extends Controller
             $product->delete();
             return response()->json(['message' => 'Product deleted.'], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Error deleting product: '.$e->getMessage()], Response::HTTP_BAD_REQUEST);
+            return response()->json(['message' => 'Error deleting product.'], Response::HTTP_BAD_REQUEST);
         }
 
 

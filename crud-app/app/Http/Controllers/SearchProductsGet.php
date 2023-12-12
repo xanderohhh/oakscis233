@@ -15,7 +15,7 @@ class SearchProductsGet extends Controller
     {
         $searchTerm = $request->query('q');
         if (empty($searchTerm)) {
-            return response()->json(['message' => 'No search query provided'], 400);
+            return response()->json(['message' => 'No search query provided'], Response::HTTP_BAD_REQUEST);
         }
         // You'll take value for q and construct a query to the database looking for records with values (or partial values) from name, description, or item number.
         
@@ -27,7 +27,7 @@ class SearchProductsGet extends Controller
 
         return response()->json(['products' => $products], Response::HTTP_OK);  
     } catch (\Exception $e) {
-        return response()->json(['message' => 'Error retrieving products: ' . $e->getMessage()], Response::HTTP_BAD_REQUEST);
+        return response()->json(['message' => 'Error retrieving products.'], Response::HTTP_BAD_REQUEST);
     }
     
        

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use \App\Models\Product;
 
@@ -16,9 +15,9 @@ class ProductGet extends Controller {
             if(!$product) {
                 return response()->json(['message' => 'Product not found.'], Response::HTTP_NOT_FOUND);
             }
-            return response()->json(['products' => $product], 200);
+            return response()->json(['products' => $product], Response::HTTP_OK);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Error retrieving products: '.$e->getMessage()], 400);
+            return response()->json(['message' => 'Error retrieving products.'], Response::HTTP_BAD_REQUEST);
         }
 
 

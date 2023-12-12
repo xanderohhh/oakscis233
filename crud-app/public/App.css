@@ -1,0 +1,14 @@
+.img-thumbnail {
+    width: 200px;
+    height: auto;
+}
+
+.btn-info {
+    background-color: lightgray;
+}
+
+.search-bar {
+    min-width: 300px;
+    /* width: 100%/6; */
+
+}
